@@ -1,11 +1,11 @@
 {
-  "name": "robotic-arcade-video",
-  "version": "0.1.0",
-  "description": "Server for Robotic Arcade",
+  "name": "ra-video",
+  "version": "1.0.0",
+  "description": "Video Server",
   "main": "server.js",
-  "repository": "",
+  "repository": "https://github.com/bruceseymour/ra-video.git",
   "author": "Bruce Seymour",
-  "license": "",
+  "license": "MIT",
   "dependencies": {
     "awake-heroku": "^1.0.17",
     "express": "^4.17.1",
