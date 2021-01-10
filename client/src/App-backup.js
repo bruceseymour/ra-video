@@ -288,8 +288,19 @@ function App() {
 
   let incomingCall;
   if (receivingCall && !callAccepted && !callRejected) {
-    incomingCall = acceptCall()
+    incomingCall = (
+      <div className="incomingCallContainer">
+        <div className="incomingCall flex flex-column">
+          <div><span className="callerID">{caller}</span> is calling you!</div>
+          <div className="incomingCallButtons flex">
+          <button name="accept" className="alertButtonPrimary" onClick={()=>acceptCall()}>Accept</button>
+          <button name="reject" className="alertButtonSecondary" onClick={()=>rejectCall()}>Reject</button>
+          </div>
+        </div>
+      </div>
+    )
   }
+
 
   let audioControl;
   if(audioMuted){
