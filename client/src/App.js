@@ -164,6 +164,7 @@ function App() {
   }
 
   function acceptCall() {
+    console.log("Accepting Call Function");
     ringtoneSound.unload();
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
       setStream(stream);
@@ -292,7 +293,10 @@ function App() {
       <div className="incomingCallContainer">
         <div className="incomingCall flex flex-column">
           <div>Connecting<span className="callerID"> {caller}</span></div>
-          {acceptCall()}
+          {
+            console.log("accepting call");
+            acceptCall()
+          }
         </div>
       </div>
     )
