@@ -293,7 +293,7 @@ function App() {
       <div className="incomingCallContainer">
         <div className="incomingCall flex flex-column">
           <div>Connecting<span className="callerID"> {caller}</span></div>
-          {acceptCall()}
+          {()=>acceptCall()}
         </div>
       </div>
     )
