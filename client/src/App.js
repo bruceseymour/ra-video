@@ -289,14 +289,7 @@ function App() {
 
   let incomingCall;
   if (receivingCall && !callAccepted && !callRejected) {
-    incomingCall = (
-      <div className="incomingCallContainer">
-        <div className="incomingCall flex flex-column">
-          <div>Connecting<span className="callerID"> {caller}</span></div>
-          {()=>acceptCall()}
-        </div>
-      </div>
-    )
+    incomingCall = acceptCall();
   }
 
   let audioControl;
