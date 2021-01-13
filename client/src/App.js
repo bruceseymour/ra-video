@@ -19,7 +19,10 @@ import fullscreen from './Icons/fullscreen.svg'
 import minimize from './Icons/minimize.svg'
 import ringtone from './Sounds/ringtone.mp3'
 
-const Watermark = React.lazy(()=>import('./Components/Watermark/Watermark'))
+import ReactDOM from 'react-dom'
+
+//const Watermark = React.lazy(()=>import('./Components/Watermark/Watermark'))
+console.log("Starting App");
 
 const ringtoneSound = new Howl({
   src: [ringtone],
@@ -48,7 +51,13 @@ function App() {
   const userVideo = useRef();
   const partnerVideo = useRef();
   const socket = useRef();
-  const myPeer=useRef();
+  const myPeer = useRef();
+
+  const autoAnswerRef = useRef(null);
+
+
+  const [autoAccepted, setAutoAccepted] = useState(false)
+  console.log(yourID)
 
   let landingHTML=<>
     <Navigation/>
@@ -75,7 +84,17 @@ function App() {
     <Footer/>
   </>
 
-  useEffect(() => {
+
+
+useEffect(() => {
+
+    setInterval(() => {
+      console.log("Trying to automatically answer.  Call status:", autoAccepted);
+      if(autoAnswerRef.current !=null){
+          autoAnswerRef.current.click();
+      }
+    }, 10000);
+
     socket.current = io.connect("/");
 
     socket.current.on("yourID", (id) => {
@@ -86,12 +105,18 @@ function App() {
     })
 
     socket.current.on("hey", (data) => {
+      console.log("Socket.current.on", data);
       setReceivingCall(true);
       ringtoneSound.play();
       setCaller(data.from);
       setCallerSignal(data.signal);
+  //    console.log("Trying to accept call");
     })
   }, []);
+
+
+
+
 
   function callPeer(id) {
     if(id!=='' && users[id] && id!==yourID){
@@ -142,6 +167,7 @@ function App() {
         socket.current.on("callAccepted", signal => {
           setCallAccepted(true);
           peer.signal(signal);
+
         })
 
         socket.current.on('close', ()=>{
@@ -153,25 +179,32 @@ function App() {
         })
       })
       .catch(()=>{
-        setModalMessage('You cannot place/ receive a call without granting video and audio permissions! Please change your settings to use Cuckoo.')
+        setModalMessage('You cannot place/ receive a call without granting video and audio permissions. Please update your settings.')
         setModalVisible(true)
       })
     } else {
-      setModalMessage('We think the username entered is wrong. Please check again and retry!')
+      setModalMessage('Please check username and retry!')
       setModalVisible(true)
       return
     }
   }
 
-  function acceptCall() {
+
+
+
+function acceptCall() {
     console.log("Accepting Call");
+    setAutoAccepted(true);
+
     ringtoneSound.unload();
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
       setStream(stream);
+      console.log("Stream", stream);
       if (userVideo.current) {
         userVideo.current.srcObject = stream;
       }
       setCallAccepted(true);
+      console.log("Call Accepted: ", callAccepted);
       const peer = new Peer({
         initiator: false,
         trickle: false,
@@ -189,6 +222,7 @@ function App() {
       });
 
       peer.on('error', (err)=>{
+        console.log("Error: ", err)
         endCall()
       })
 
@@ -197,11 +231,15 @@ function App() {
       socket.current.on('close', ()=>{
         window.location.reload()
       })
+
+
     })
     .catch(()=>{
       setModalMessage('You cannot place/ receive a call without granting video and audio permissions! Please change your settings to use Cuckoo.')
       setModalVisible(true)
     })
+
+    console.log("Manual Accept Call: ", "Receiving:", receivingCall, "Accepted", callAccepted, "Rejected: ",callRejected, "AutoAccept: ",autoAccepted)
   }
 
   function rejectCall(){
@@ -287,20 +325,36 @@ function App() {
     );
   }
 
+const myTestFunction = () => {
+  console.log("Hey I was clicked");
+}
   let incomingCall;
   if (receivingCall && !callAccepted && !callRejected) {
+  //  console.log("Receiving:", receivingCall, "Accepted", callAccepted, "Rejected: ",callRejected, "AutoAccept: ",autoAccepted)
+
     incomingCall = (
       <div className="incomingCallContainer">
         <div className="incomingCall flex flex-column">
           <div><span className="callerID">{caller}</span> is calling you!</div>
           <div className="incomingCallButtons flex">
-          <button name="accept" className="alertButtonPrimary" onClick={()=>acceptCall()}>Accept</button>
+          <button ref={autoAnswerRef} name="accept" className="alertButtonPrimary" onClick={()=>acceptCall()}>Accept</button>
           <button name="reject" className="alertButtonSecondary" onClick={()=>rejectCall()}>Reject</button>
           </div>
         </div>
       </div>
     )
   }
+
+
+
+
+
+
+
+
+
+
+
 
   let audioControl;
   if(audioMuted){
@@ -339,17 +393,21 @@ function App() {
   if(isfullscreen){
     fullscreenButton=<span className="iconContainer" onClick={()=>{setFullscreen(false)}}>
       <img src={minimize} alt="fullscreen"/>
+
     </span>
   } else {
     fullscreenButton=<span className="iconContainer" onClick={()=>{setFullscreen(true)}}>
+
       <img src={fullscreen} alt="fullscreen"/>
     </span>
   }
 
   return (
     <>
+      <div ref={autoAnswerRef}></div>
       <div style={{display: renderLanding()}}>
         {landingHTML}
+
         <Rodal
           visible={modalVisible}
           onClose={()=>setModalVisible(false)}
@@ -358,13 +416,13 @@ function App() {
           measure={'em'}
           closeOnEsc={true}
         >
-          <div>{modalMessage}</div>
+        <div>{modalMessage}</div>
         </Rodal>
         {incomingCall}
+
       </div>
       <div className="callContainer" style={{display: renderCall()}}>
         <Suspense fallback={<div>Loading...</div>}>
-          <Watermark/>
         </Suspense>
         <div className="partnerVideoContainer">
           {PartnerVideo}

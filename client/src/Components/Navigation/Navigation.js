@@ -1,6 +1,4 @@
 import React from 'react'
-import cuckoologo from '../../Icons/cuckoo-logo.svg'
-import GitHubButton from 'react-github-btn'
 import '../Navigation/Navigation.css'
 
 const Navigation = () => {
