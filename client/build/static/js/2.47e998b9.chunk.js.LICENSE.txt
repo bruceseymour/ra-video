@@ -39,12 +39,6 @@ object-assign
  * @license  MIT
  */
 
-/*!
- * github-buttons v2.14.0
- * (c) 2020 なつき
- * @license BSD-2-Clause
- */
-
 /*! https://mths.be/utf8js v2.1.2 by @mathias */
 
 /*! queue-microtask. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
