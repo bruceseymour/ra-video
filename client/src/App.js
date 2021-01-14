@@ -55,7 +55,6 @@ function App() {
 
   const autoAnswerRef = useRef(null);
 
-
   const [autoAccepted, setAutoAccepted] = useState(false)
   console.log(yourID)
 
