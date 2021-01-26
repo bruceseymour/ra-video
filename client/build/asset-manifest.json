@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.580115a7.chunk.css",
-    "main.js": "/static/js/main.4e2782bd.chunk.js",
-    "main.js.map": "/static/js/main.4e2782bd.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.cfae3202.js",
-    "runtime-main.js.map": "/static/js/runtime-main.cfae3202.js.map",
-    "static/css/2.190caba9.chunk.css": "/static/css/2.190caba9.chunk.css",
-    "static/js/2.47e998b9.chunk.js": "/static/js/2.47e998b9.chunk.js",
-    "static/js/2.47e998b9.chunk.js.map": "/static/js/2.47e998b9.chunk.js.map",
+    "main.css": "/static/css/main.43d99a1e.chunk.css",
+    "main.js": "/static/js/main.3f29a660.chunk.js",
+    "main.js.map": "/static/js/main.3f29a660.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
+    "static/css/2.7e5e8559.chunk.css": "/static/css/2.7e5e8559.chunk.css",
+    "static/js/2.4b2d2e0f.chunk.js": "/static/js/2.4b2d2e0f.chunk.js",
+    "static/js/2.4b2d2e0f.chunk.js.map": "/static/js/2.4b2d2e0f.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.681ee41df4309ccef9e9052c54adbaef.js": "/precache-manifest.681ee41df4309ccef9e9052c54adbaef.js",
+    "precache-manifest.f163c0944ae33f520f755ab9f5d50629.js": "/precache-manifest.f163c0944ae33f520f755ab9f5d50629.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.190caba9.chunk.css.map": "/static/css/2.190caba9.chunk.css.map",
-    "static/css/main.580115a7.chunk.css.map": "/static/css/main.580115a7.chunk.css.map",
-    "static/js/2.47e998b9.chunk.js.LICENSE.txt": "/static/js/2.47e998b9.chunk.js.LICENSE.txt",
+    "static/css/2.7e5e8559.chunk.css.map": "/static/css/2.7e5e8559.chunk.css.map",
+    "static/css/main.43d99a1e.chunk.css.map": "/static/css/main.43d99a1e.chunk.css.map",
+    "static/js/2.4b2d2e0f.chunk.js.LICENSE.txt": "/static/js/2.4b2d2e0f.chunk.js.LICENSE.txt",
     "static/media/camera-stop.svg": "/static/media/camera-stop.85f8745d.svg",
     "static/media/camera.svg": "/static/media/camera.299a8f67.svg",
     "static/media/fullscreen.svg": "/static/media/fullscreen.8f5e7921.svg",
@@ -25,10 +25,10 @@
     "static/media/share.svg": "/static/media/share.e7b143c0.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.cfae3202.js",
-    "static/css/2.190caba9.chunk.css",
-    "static/js/2.47e998b9.chunk.js",
-    "static/css/main.580115a7.chunk.css",
-    "static/js/main.4e2782bd.chunk.js"
+    "static/js/runtime-main.09b85ec0.js",
+    "static/css/2.7e5e8559.chunk.css",
+    "static/js/2.4b2d2e0f.chunk.js",
+    "static/css/main.43d99a1e.chunk.css",
+    "static/js/main.3f29a660.chunk.js"
   ]
 }

@@ -6,9 +6,9 @@ import Rodal from 'rodal'
 import {Howl} from 'howler'
 import Navigation from './Components/Navigation/Navigation'
 import Footer from './Components/Footer/Footer'
+import Pinball from './Components/Pinball'
 
 import  'rodal/lib/rodal.css'
-
 import camera from './Icons/camera.svg'
 import camerastop from './Icons/camera-stop.svg'
 import microphone from './Icons/microphone.svg'
@@ -57,6 +57,7 @@ function App() {
   console.log(yourID)
 
   let landingHTML=<>
+    <Pinball/>
     <Navigation/>
     <main>
       <div className="u-margin-top-xxlarge u-margin-bottom-xxlarge">
