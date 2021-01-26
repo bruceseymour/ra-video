@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef, Suspense } from 'react';
+import ReactDOM from 'react-dom'
 import io from "socket.io-client";
 import Peer from "simple-peer";
 import Rodal from 'rodal'
 import {Howl} from 'howler'
-
 import Navigation from './Components/Navigation/Navigation'
 import Footer from './Components/Footer/Footer'
 
@@ -18,8 +18,6 @@ import hangup from './Icons/hang-up.svg'
 import fullscreen from './Icons/fullscreen.svg'
 import minimize from './Icons/minimize.svg'
 import ringtone from './Sounds/ringtone.mp3'
-
-import ReactDOM from 'react-dom'
 
 //const Watermark = React.lazy(()=>import('./Components/Watermark/Watermark'))
 console.log("Starting App");
@@ -112,8 +110,6 @@ useEffect(() => {
   //    console.log("Trying to accept call");
     })
   }, []);
-
-
 
 
 
