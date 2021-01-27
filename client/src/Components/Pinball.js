@@ -5,7 +5,7 @@ export default function Pinball() {
 console.log("Starting Pinball Controls");
 
 // change endpoint to public IP with port forward to local servers
-const ENDPOINT = "24.60.168.240:8080"
+const ENDPOINT = "http://24.60.168.240:8080"
 //local const ENDPOINT = "http://192.168.86.250:8080";
 
 // Live Tesing (Hardware Available)
