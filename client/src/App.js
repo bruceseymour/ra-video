@@ -6,7 +6,7 @@ import Rodal from 'rodal'
 import {Howl} from 'howler'
 import Navigation from './Components/Navigation/Navigation'
 import Footer from './Components/Footer/Footer'
-import Pinball from './Components/Pinball'
+import Pinball from './Components/Pinball/Pinball'
 
 import  'rodal/lib/rodal.css'
 import camera from './Icons/camera.svg'

@@ -5,8 +5,9 @@ export default function Pinball() {
 console.log("Starting Pinball Controls");
 
 // change endpoint to public IP with port forward to local servers
-const ENDPOINT = "http://24.60.168.240:8080"
-//local const ENDPOINT = "http://192.168.86.250:8080";
+//const ENDPOINT = "https://24.60.168.240:8080"
+//const ENDPOINT = "https://192.168.86.250:8080";
+const ENDPOINT = "robot.roboticarcade.com:8080";
 
 // Live Tesing (Hardware Available)
 const socket = socketIOClient(ENDPOINT);
@@ -19,6 +20,8 @@ let [keyHistory, updateKeyHistory] = useState([]);
 let keyPressedTimeStart = useState(new Date().getTime())
 let keyPressedTimeEnd = useState(new Date().getTime())
 let buttonDuration = useState(keyPressedTimeEnd[0] - keyPressedTimeStart[0])
+let [version, updateVersion] = useState(new Date().getTime())
+
 
 function increaseButtonCount(buttonCount) {
   setButtonCount( prevCount => prevCount+1);
@@ -279,5 +282,7 @@ function useKeyPress(targetKey) {
     return keyPressed;
   } // end function useKeyPress(targetKey)
 
-return (<></>)
+return (<>
+  {version
+  }</>)
 }
