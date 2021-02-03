@@ -1,13 +1,15 @@
 import socketIOClient from "socket.io-client";
 import React, { setState, useState, useEffect } from 'react';
-export default function Pinball() {
+
+
+export default function PinballKeyboardControl() {
 
 console.log("Starting Pinball Controls");
 
 // change endpoint to public IP with port forward to local servers
 //const ENDPOINT = "https://24.60.168.240:8080"
 //const ENDPOINT = "https://192.168.86.250:8080";
-const ENDPOINT = "robot.roboticarcade.com:8080";
+const ENDPOINT = "robot.roboticarcade.com";
 
 // Live Tesing (Hardware Available)
 const socket = socketIOClient(ENDPOINT);
